@@ -17,7 +17,7 @@
 
     <form method="POST" action={{route('blog.update',$data->id)}}>
         @csrf
-        
+
         <div class="form-group">
           <label for="">Name</label>
           <input type="text" class="form-control" id="" value="{{$data->name}}"  name="blog_name">

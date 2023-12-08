@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BlogController extends Controller
 {
@@ -20,9 +21,19 @@ class BlogController extends Controller
 
        public function store(Request $request)
        {
+           $request->validate(
+             [
+                'blog_name' => 'required',
+                'email' => 'required|unique:blogs'
+             ]
+           );
+           
              Blog::create([
-                'name' =>  $request->blog_name
+                'name' =>  $request->blog_name,
+                'email' => $request->email,
+                'description' => $request->description
              ]);
+
 
              return redirect()->route('blog.index');
        }
@@ -43,6 +54,14 @@ class BlogController extends Controller
          ]);
 
          return redirect()->route('blog.index');
+       }
+
+       public function delete($id)
+       {
+            $data = Blog::where('id',$id)->first();
+
+            $data->delete();
+            return back();
        }
 
 }

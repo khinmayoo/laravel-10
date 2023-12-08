@@ -8,6 +8,6 @@
 </head>
 <body>
     <h1>Post Index</h1>
-    <a href={{route('posts.create')}}>Create</a>
+    <a href={{route('post.create')}}>Create</a>
 </body>
 </html>

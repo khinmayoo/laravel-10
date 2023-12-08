@@ -13,12 +13,37 @@
 
 <div class="container">
     <h1 class="mt-5">Blog Create</h1>
+    {{-- @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif --}}
+
     <form method="POST" action={{route('store')}}>
         @csrf
         <div class="form-group">
           <label for="">Name</label>
-          <input type="text" class="form-control" id="" placeholder="Enter Name" name="blog_name">
+          <input type="text" class="form-control" id="" placeholder="Enter Name" name="blog_name" value="{{old('blog_name')}}" >
+          @error('blog_name')
+          <div class="alert alert-danger">{{ $message }}</div>
+          @enderror
         </div>
+        <div class="form-group">
+            <label for="">Email</label>
+            <input type="email" class="form-control" id="" placeholder="Enter Email" name="email"  value="{{old('email')}}" >
+            @error('email')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+        </div>
+          <div class="form-group">
+            <label for="">Description</label>
+            <input type="text" class="form-control" id="" placeholder="Enter description" name="description" value="{{old('email')}}" >
+          </div>
+
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
  </div>
