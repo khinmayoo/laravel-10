@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 Route::get('blog/index',[BlogController::class ,'index'])->name('blog.index');
 Route::get('blog/create',[BlogController::class,'create'])->name('blog.create');
@@ -28,3 +28,7 @@ Route::post('blog/{id}/destory',[BlogController::class,'delete'])->name('blog.de
 
 Route::resource('post', PostController::class);
 
+
+Route::get('/chart',function (){
+    return view('chart');
+})->name('chart');

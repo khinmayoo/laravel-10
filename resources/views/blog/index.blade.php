@@ -29,7 +29,6 @@
                 <form action="{{ route('blog.delete', $value->id) }}" method="post">
                     @csrf
                     @method('DELETE')
-
                     <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                   </form>
             </td>

@@ -27,7 +27,7 @@ class BlogController extends Controller
                 'email' => 'required|unique:blogs'
              ]
            );
-           
+
              Blog::create([
                 'name' =>  $request->blog_name,
                 'email' => $request->email,
@@ -58,6 +58,7 @@ class BlogController extends Controller
 
        public function delete($id)
        {
+   
             $data = Blog::where('id',$id)->first();
 
             $data->delete();
