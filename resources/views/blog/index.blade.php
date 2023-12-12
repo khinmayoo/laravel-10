@@ -28,7 +28,7 @@
             <td><a href={{route('blog.edit',$value->id)}} class="btn btn-success">Edit</a>
                 <form action="{{ route('blog.delete', $value->id) }}" method="post">
                     @csrf
-                    @method('DELETE')
+
                     <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                   </form>
             </td>
