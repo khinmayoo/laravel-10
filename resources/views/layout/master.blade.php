@@ -61,7 +61,7 @@
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                             <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                                 <li>
-                                    <a href={{route('home')}}>Dashboard 1</a>
+                                    <a href={{route('index')}}>Dashboard 1</a>
                                 </li>
 
                             </ul>
@@ -161,7 +161,7 @@
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
-                                    <a href="{{route('home')}}">Dashboard 1</a>
+                                    <a href="{{route('index')}}">Dashboard 1</a>
                                 </li>
 
                             </ul>

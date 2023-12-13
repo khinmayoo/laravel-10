@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\PostController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,7 +18,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-})->name('home');
+})->name('welcome');
+
+Route::get('/index',function (){
+    return view('index');
+})->name('index');
 
 Route::get('blog/index',[BlogController::class ,'index'])->name('blog.index');
 Route::get('blog/create',[BlogController::class,'create'])->name('blog.create');
@@ -32,3 +37,7 @@ Route::resource('post', PostController::class);
 Route::get('/chart',function (){
     return view('chart');
 })->name('chart');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
