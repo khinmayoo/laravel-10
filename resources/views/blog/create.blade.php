@@ -23,7 +23,7 @@
         </div>
     @endif --}}
 
-    <form method="POST" action={{route('store')}}>
+    <form method="POST" action={{route('store')}} enctype="multipart/form-data">
         @csrf
         <div class="form-group">
           <label for="">Name</label>
@@ -43,7 +43,10 @@
             <label for="">Description</label>
             <input type="text" class="form-control" id="" placeholder="Enter description" name="description" value="{{old('email')}}" >
           </div>
-
+          <div class="form-group">
+            <label for="">Image</label>
+            <input type="file" class="form-control" id="" placeholder="Enter description" name="image" >
+          </div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
  </div>

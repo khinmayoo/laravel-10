@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\PostController;
+use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -20,24 +21,22 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::get('/index',function (){
-    return view('index');
-})->name('index');
 
-Route::get('blog/index',[BlogController::class ,'index'])->name('blog.index');
-Route::get('blog/create',[BlogController::class,'create'])->name('blog.create');
-Route::POST('blog/store',[BlogController::class,'store'])->name('store');
-Route::get('blog/{id}/edit',[BlogController::class,'edit'])->name('blog.edit');
-Route::post('blog/{id}/update',[BlogController::class,'update'])->name('blog.update');
-Route::post('blog/{id}/destory',[BlogController::class,'delete'])->name('blog.delete');
-
-Route::resource('post', PostController::class);
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('blog/index',[BlogController::class,'index'])->name('blog.index');
+    Route::get('blog/create',[BlogController::class,'create'])->name('blog.create');
+    Route::POST('blog/store',[BlogController::class,'store'])->name('store');
+    Route::get('blog/{id}/edit',[BlogController::class,'edit'])->name('blog.edit');
+    Route::post('blog/{id}/update',[BlogController::class,'update'])->name('blog.update');
+    Route::post('blog/{id}/destory',[BlogController::class,'delete'])->name('blog.delete');
+    Route::resource('post', PostController::class);
+});
 
 
 Route::get('/chart',function (){
     return view('chart');
 })->name('chart');
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/index', [App\Http\Controllers\HomeController::class, 'index'])->name('index');

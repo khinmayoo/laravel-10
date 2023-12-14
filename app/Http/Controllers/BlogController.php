@@ -30,14 +30,25 @@ class BlogController extends Controller
            $request->validate(
              [
                 'blog_name' => 'required',
-                'email' => 'required|unique:blogs'
+                'email' => 'required|unique:blogs',
+                'image' => 'required|file'
              ]
            );
+
+        //    dd($request->all());
+            //$name = $request->file('image')->getClientOriginalName();
+            // dd('hello.'.$request->file('image')->extension());
+            $file_name = time().'.'.$request->file('image')->extension();
+            // $path  = public_path('images/').$file_name;
+            // dd(public_path());
+            $request->file('image')->move(public_path('images'),$file_name);
+
              Blog::create([
                 'name' =>  $request->blog_name,
                 'email' => $request->email,
-                'description' => $request->description
-             ]);
+                'description' => $request->description,
+                'image' => $file_name
+            ]);
 
 
              return redirect()->route('blog.index');

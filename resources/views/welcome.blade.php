@@ -9,6 +9,5 @@
 <body>
     <h1>Welcome Page</h1>
      <a href="{{route('login')}}">Login</a>
-     <a href="{{route('register')}}">Register</a>
 </body>
 </html>

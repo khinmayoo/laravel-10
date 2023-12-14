@@ -71,7 +71,7 @@
                                 <i class="fas fa-chart-bar"></i>Chart</a>
                         </li>
                         <li>
-                            <a href="">
+                            <a href="{{route('blog.index')}}">
                                 <i class="fas fa-table"></i>Tables</a>
                         </li>
                         <li>
@@ -171,7 +171,7 @@
                                 <i class="fas fa-chart-bar"></i>Charts</a>
                         </li>
                         <li>
-                            <a href="table.html">
+                            <a href="{{route('blog.index')}}">
                                 <i class="fas fa-table"></i>Tables</a>
                         </li>
                         <li>
@@ -409,8 +409,18 @@
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__footer">
-                                                <a href="#">
-                                                    <i class="zmdi zmdi-power"></i>Logout</a>
+                                                {{-- <a href="#"> --}}
+                                                    {{-- <i class="zmdi zmdi-power"></i>Logout</a> --}}
+
+                                                    <a  href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
                                             </div>
                                         </div>
                                     </div>
@@ -436,23 +446,24 @@
     <script src={{asset('vendor/jquery-3.2.1.min.js')}}></script>
     <!-- Bootstrap JS-->
     <script src={{asset('vendor/bootstrap-4.1/popper.min.js')}}></script>
-    <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <script src="{{asset('vendor/bootstrap-4.1/bootstrap.min.js')}}"></script>
     <!-- Vendor JS       -->
-    <script src="vendor/slick/slick.min.js">
+    <script src="{{asset('vendor/slick/slick.min.js')}}">
     </script>
-    <script src="vendor/wow/wow.min.js"></script>
-    <script src="vendor/animsition/animsition.min.js"></script>
-    <script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    <script src="{{asset('vendor/wow/wow.min.js')}}"></script>
+    <script src="{{asset('vendor/animsition/animsition.min.js')}}"></script>
+    <script src="{{asset('vendor/bootstrap-progressbar/bootstrap-progressbar.min.js')}}">
     </script>
-    <script src="vendor/counter-up/jquery.waypoints.min.js"></script>
-    <script src="vendor/counter-up/jquery.counterup.min.js">
+    <script src="{{asset('vendor/counter-up/jquery.waypoints.min.js')}}"></script>
+    <script src="{{asset('vendor/counter-up/jquery.counterup.min.js')}}">
     </script>
-    <script src="vendor/circle-progress/circle-progress.min.js"></script>
-    <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
-    <script src="vendor/chartjs/Chart.bundle.min.js"></script>
-    <script src="vendor/select2/select2.min.js">
+    <script src="{{asset('vendor/circle-progress/circle-progress.min.js')}}"></script>
+    <script src="{{asset('vendor/perfect-scrollbar/perfect-scrollbar.js')}}"></script>
+    <script src="{{asset('vendor/chartjs/Chart.bundle.min.js')}}"></script>
+    <script src="{{asset('vendor/select2/select2.min.js')}}">
     </script>
-     @yield('js')
+    <script src="{{asset('js/main.js')}}"></script>
+
 </body>
 </html>
 <!-- end document-->
