@@ -7,21 +7,23 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>State Page</h1>
+    <h1>Township Page</h1>
      <a href="{{route('login')}}">Login</a>
 
      <table>
         <tr>
             <th>Id</th>
             <th>Name</th>
+            <th>State ID</th>
         </tr>
 
         <tbody>
-            @foreach ($state as $value)
+            @foreach ($township as $value)
             <tr>
 
                 <td>{{$value->id}}</td>
                 <td>{{$value->name}}</td>
+                <td>{{$value->state->name}}</td>
             </tr>
             @endforeach
 

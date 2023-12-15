@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\PostController;
+use App\Models\State;
+use App\Models\Township;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -40,3 +42,12 @@ Route::get('/chart',function (){
 Auth::routes(['register' => false]);
 
 Route::get('/index', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
+Route::get('state',function (){
+    $state = State::all();
+    return view('welcome',compact('state'));
+});
+
+Route::get('township',function(){
+    $township = Township::with('state')->get();
+    return view('township',compact('township'));
+});

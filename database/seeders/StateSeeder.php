@@ -1,0 +1,31 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\State;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+
+class StateSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        $data = [
+            'Yangon',
+            'Mandalay',
+            'Sagaing',
+            'Chin'
+        ];
+
+        foreach($data as $value)
+        {
+            State::create([
+                'name' => $value
+            ]);
+        }
+
+    }
+}
