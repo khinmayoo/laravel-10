@@ -17,6 +17,18 @@ class BlogRepository implements BlogRepositoryInterface
         return Blog::all();
     }
 
+    public function getById($id)
+    {
+        return Blog::find($id);
+    }
+
+    public function update($params, $id)
+    {
+        //$data = Blog::where('id', $id)->first();
+        $data = $this->getById($id);
+        $data->update($params);
+    }
+
     public function create($params)
     {
 

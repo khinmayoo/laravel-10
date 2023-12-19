@@ -676,7 +676,7 @@
                         <tbody>
                             @foreach($data as $member)
                             <tr>
-                                <td>{{$member->name}}</td>
+                                <td><a href="/blog/{{$member->id}}/edit">{{$member->name}}</a></td>
                                 <td>{{$member->email}}</td>
                                 <td>{{$member->description}}</td>
                                 <td class="process"></td>

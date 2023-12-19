@@ -22,6 +22,16 @@
           <label for="">Name</label>
           <input type="text" class="form-control" id="" value="{{$data->name}}"  name="blog_name">
         </div>
+
+        <div class="form-group">
+          <label for="">E-mail</label>
+          <input type="text" class="form-control" id="" value="{{$data->email}}"  name="blog_email">
+        </div>
+
+        <div class="form-group">
+          <label for="">Description</label>
+          <input type="text" class="form-control" id="" value="{{$data->description}}"  name="blog_description">
+        </div>
         <button type="submit" class="btn btn-primary">Update</button>
       </form>
  </div>
