@@ -17,13 +17,15 @@
         </tr>
 
         <tbody>
-            @foreach ($state as $value)
-            <tr>
+            @if(isset($state))
+                @foreach ($state as $value)
+                <tr>
 
-                <td>{{$value->id}}</td>
-                <td>{{$value->name}}</td>
-            </tr>
-            @endforeach
+                    <td>{{$value->id}}</td>
+                    <td>{{$value->name}}</td>
+                </tr>
+                @endforeach
+            @endif
 
         </tbody>
      </table>

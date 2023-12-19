@@ -2,21 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Blog;
+use App\Models\Blog\Blog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Blog\BlogRepositoryInterface;
 
 class BlogController extends Controller
 {
-    public function __construct()
+    private $blogReposity;
+  
+    public function __construct(BlogRepositoryInterface $blogReposity)
     {
         $this->middleware('auth');
+        $this->blogReposity = $blogReposity;
     }
 
        public function index()
        {
 
-         $data = Blog::all();
+         //$data = Blog::all();
+         $data = $this->blogReposity->get();
          return view('blog.index',compact('data'));
        }
 

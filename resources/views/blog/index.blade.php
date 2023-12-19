@@ -658,6 +658,38 @@
                 <!-- END DATA TABLE-->
             </div>
         </div>
+
+        <div class="row m-t-30">
+            <div class="col-md-12">
+                <!-- DATA TABLE-->
+                <div class="table-responsive m-b-40">
+                    <table class="table table-borderless table-data3">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>description</th>
+                                <th>status</th>
+                                <th>price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($data as $member)
+                            <tr>
+                                <td>{{$member->name}}</td>
+                                <td>{{$member->email}}</td>
+                                <td>{{$member->description}}</td>
+                                <td class="process"></td>
+                                <td></td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                <!-- END DATA TABLE-->
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-md-12">
                 <div class="copyright">
