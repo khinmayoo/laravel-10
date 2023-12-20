@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Blog\Blog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use App\Models\Blog\BlogRepositoryInterface;
 
 class BlogController extends Controller
@@ -19,9 +20,14 @@ class BlogController extends Controller
 
   public function index()
   {
-    //$data = Blog::all();
-    $data = $this->blogReposity->get();
-    return view('blog.index', compact('data'));
+    try {
+      //dump(auth()->user()); die;
+      $data = $this->blogReposity->get();
+      return view('blog.index', compact('data'));
+    } catch (\Exception $e) {
+      Log::info('Listing Failed');
+      return back()->withErrors('Listing Failed');
+    }
   }
 
   public function create()
@@ -67,13 +73,18 @@ class BlogController extends Controller
 
   public function update(Request $request, $id)
   {
-    $this->blogReposity->update([
-      'name' => $request->blog_name,
-      'email' => $request->blog_email,
-      'description' => $request->blog_description
-    ], $id);
+    try {
+      $this->blogReposity->update([
+        'name' => $request->blog_name,
+        'email' => $request->blog_email,
+        'description' => $request->blog_description
+      ], $id);
 
-    return redirect()->route('blog.index');
+      return redirect()->route('blog.index');
+    } catch (\Exception $e) {
+      return back()->withErrors('Update Failed');
+    }
+
   }
 
   public function delete($id)
